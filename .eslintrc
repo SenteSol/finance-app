@@ -5,7 +5,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "extends": ["plugin:cypress/recommended","plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
