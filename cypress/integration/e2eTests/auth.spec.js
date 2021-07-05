@@ -28,6 +28,13 @@ describe("Login", () => {
     const email = "bgpeter@gmail.com";
     const password = "P@ssw0rd";
     cy.visit("/");
-    cy.get("#email").type(email).get("#password").type(password).get("#loginForm").get("#email").should("exist");
+    cy.get("#email")
+      .type(email)
+      .get("#password")
+      .type(password)
+      .get("#loginForm")
+      .submit()
+      .get("#content-ui")
+      .should("exist");
   });
 });

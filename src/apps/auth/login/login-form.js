@@ -5,7 +5,7 @@ import { Grid, Button } from "@material-ui/core";
 import TextFieldWrapper from "../../../components/FormsUI/TextField";
 import { useStyles } from "../authStyles";
 
-const Login = ({ formik }) => {
+const LoginForm = ({ formik }) => {
   const { email, password } = formik;
   const classes = useStyles();
 
@@ -33,4 +33,4 @@ const Login = ({ formik }) => {
   );
 };
 
-export default Login;
+export default LoginForm;
