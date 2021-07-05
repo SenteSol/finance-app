@@ -20,12 +20,14 @@ describe("Login", () => {
       .get("#password")
       .type(password)
       .get("#confirmPassword")
-      .type(confirmPassword);
+      .type(confirmPassword)
+      .get("#confirmPassword")
+      .should("exist");
   });
   it("It should login a user", () => {
     const email = "bgpeter@gmail.com";
     const password = "P@ssw0rd";
     cy.visit("/");
-    cy.get("#email").type(email).get("#password").type(password).get("#loginForm");
+    cy.get("#email").type(email).get("#password").type(password).get("#loginForm").get("#email").should("exist");
   });
 });
