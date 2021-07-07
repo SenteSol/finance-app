@@ -26,6 +26,7 @@ const authReducer = (state = initialState, action) => {
     case authActionTypes.REGISTER_USER:
       return {
         ...state,
+        isAuthenticated: true,
         createUser: action.payload,
         error: {}
       };

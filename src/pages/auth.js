@@ -4,7 +4,7 @@ import LoginView from "../apps/auth/login";
 import RegisterView from "../apps/auth/registration";
 
 const Authentication = ({ match }) => (
-  <div className="auth">
+  <div>
     <Route exact path={`${match.path}`} component={LoginView} />
     <Route exact path={`${match.path}register`} component={RegisterView} />
   </div>

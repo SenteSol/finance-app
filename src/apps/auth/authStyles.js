@@ -30,14 +30,6 @@ export const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     textAlign: "center"
   },
-  companyLogo: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    color: "#ee475b",
-    margin: "30px 0",
-    fontWeight: 800
-  },
   authTitle: {
     color: "#808080",
     fontWeight: 400

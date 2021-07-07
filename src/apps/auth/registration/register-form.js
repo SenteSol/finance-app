@@ -5,7 +5,7 @@ import { Grid, Button } from "@material-ui/core";
 import TextFieldWrapper from "../../../components/FormsUI/TextField";
 import { useStyles } from "../authStyles";
 
-const Register = props => {
+const RegisterForm = props => {
   const { firstName, lastName, email, password, confirmPassword } = props;
   const classes = useStyles();
 
@@ -48,4 +48,4 @@ const Register = props => {
   );
 };
 
-export default Register;
+export default RegisterForm;
