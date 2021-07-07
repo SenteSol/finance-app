@@ -26,14 +26,15 @@ const authReducer = (state = initialState, action) => {
     case authActionTypes.REGISTER_USER:
       return {
         ...state,
-        createUser: action.payload,
+        isAuthenticated: true,
+        currentUser: action.payload.user,
         error: {}
       };
     case authActionTypes.REGISTER_FAILED:
       return {
         ...state,
         error: action.payload,
-        createUser: {}
+        currentUser: {}
       };
     default:
       return state;

@@ -1,0 +1,13 @@
+/* logo-6 */
+.logo-6 {
+    color: #ee475b;
+    font-family: 'Cinzel', serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+.logo-6 span {
+    background: #ee475b;
+    color: #fff;
+    display: inline-block;
+    padding: 0 16px;
+}
