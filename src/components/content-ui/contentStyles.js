@@ -28,8 +28,8 @@ export const useStylesBase = makeStyles({
     paddingTop: "5px",
     justifyContent: "space-between"
   },
-  username: {
-    marginTop: "3px"
+  user: {
+    marginTop: "2px"
   },
   smallScreen: {
     padding: "80px 60px",
@@ -132,10 +132,10 @@ export const useStyles = makeStyles(theme => ({
     fontStyle: "italic"
   },
   content: {
-    height: "100vh",
     flexGrow: 1,
     padding: theme.spacing(3),
-    background: "#eee"
+    background: "#eee",
+    height: "100vh"
   },
   contentLink: {
     display: "flex",

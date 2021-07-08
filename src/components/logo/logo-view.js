@@ -13,7 +13,9 @@ const Logo = props => {
         </span>
       ) : (
         <span className={classes.logo}>
-          $ente <span className={classes.logoBorder}>sol</span>
+          <strong>
+            $ente <span className={classes.logoBorder}>sol</span>
+          </strong>
         </span>
       )}
     </>
