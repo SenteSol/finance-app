@@ -22,7 +22,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PeopleIcon from "@material-ui/icons/People";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import AppsIcon from "@material-ui/icons/Apps";
 import AvTimerIcon from "@material-ui/icons/AvTimer";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Logo from "../logo/logo-view";
@@ -146,7 +146,7 @@ export default function ContentUI({ children, props: { history } }) {
                 <ListItem button key={text}>
                   <Link to={`/${text.toLowerCase()}`} className={classes.contentLink}>
                     <ListItemIcon className={classesBase.root}>
-                      {index === 0 ? <AvTimerIcon /> : index === 1 ? <PeopleIcon /> : <AttachMoneyIcon />}
+                      {index === 0 ? <AvTimerIcon /> : index === 1 ? <PeopleIcon /> : <AppsIcon />}
                     </ListItemIcon>{" "}
                     <ListItemText primary={text} />{" "}
                   </Link>
