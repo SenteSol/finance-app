@@ -27,6 +27,36 @@ export const useStylesBase = makeStyles({
     display: "flex",
     paddingTop: "5px",
     justifyContent: "space-between"
+  },
+  username: {
+    marginTop: "3px"
+  },
+  smallScreen: {
+    padding: "80px 60px",
+    background: "#eee",
+    height: "100vh"
+  },
+  smallScreenTitle: {
+    fontSize: "36px",
+    marginBottom: "30px",
+    fontWeight: "lighter",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  smallScreenMessage: {
+    color: "#777",
+    fontSize: "14px",
+    marginBottom: "20px",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  smallScreenButton: {
+    background: "#32b8cb",
+    color: "#fff",
+    fontSize: "13px",
+    lineHeight: "13px",
+    textTransform: "none"
   }
 });
 export const useStyles = makeStyles(theme => ({
@@ -102,6 +132,7 @@ export const useStyles = makeStyles(theme => ({
     fontStyle: "italic"
   },
   content: {
+    height: "100vh",
     flexGrow: 1,
     padding: theme.spacing(3),
     background: "#eee"

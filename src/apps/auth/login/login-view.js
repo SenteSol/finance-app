@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useSnackbar } from "react-simple-snackbar";
 import { CssBaseline, Typography, Container, Grid } from "@material-ui/core";
 import LoginForm from "./login-form";
-import Logo from "../../../components/Logo/logo-view";
+import Logo from "../../../components/logo/logo-view";
 import { closeOptions } from "../../../utils/snackbar.styles";
 import { loginUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";

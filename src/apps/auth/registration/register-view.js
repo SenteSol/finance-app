@@ -16,7 +16,7 @@ import {
   LAST_NAME_REQUIRED,
   PASSWORD_REQUIRED
 } from "../../../constants/apps/auth";
-import Logo from "../../../components/Logo/logo-view";
+import Logo from "../../../components/logo/logo-view";
 
 const RegisterView = ({ history }) => {
   const [closeSnackbar] = useSnackbar(closeOptions);

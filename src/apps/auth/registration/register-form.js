@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form } from "formik";
 import { Grid, Button } from "@material-ui/core";
-import TextFieldWrapper from "../../../components/FormsUI/TextField";
+import TextFieldWrapper from "../../../components/forms-ui/TextField";
 import { useStyles } from "../authStyles";
 
 const RegisterForm = props => {
