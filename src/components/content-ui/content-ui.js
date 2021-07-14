@@ -15,20 +15,21 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Button,
-  Grid
+  Grid,
+  Button
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PeopleIcon from "@material-ui/icons/People";
-import AppsIcon from "@material-ui/icons/Apps";
 import AvTimerIcon from "@material-ui/icons/AvTimer";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import AppsIcon from "@material-ui/icons/Apps";
 import Logo from "../logo/logo-view";
 import { username } from "./utils";
+import checkForToken from "../../utils/getToken";
 import { useStyles, useStylesBase } from "./contentStyles";
-import { SMALL_SCREEN_MESSAGE } from "../../constants/components/content-ui/content-ui";
+import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
 
 export default function ContentUI({ children, props: { history } }) {
   const [user, setUser] = useState("");
@@ -37,7 +38,7 @@ export default function ContentUI({ children, props: { history } }) {
   const classesBase = useStylesBase();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const screenSize = window.matchMedia("(max-width: 768px)");
+  const screenSize = window.matchMedia("(max-width: 1080px)");
 
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
@@ -85,6 +86,8 @@ export default function ContentUI({ children, props: { history } }) {
     </div>
   );
 
+  checkForToken();
+
   return (
     <>
       {screenSize.matches && miniScreen ? (
@@ -114,7 +117,7 @@ export default function ContentUI({ children, props: { history } }) {
                 <Logo />
                 <span className={classesBase.avatar}>
                   <AccountCircleIcon />
-                  <span className={classesBase.username}>{user}</span>
+                  <span className={classesBase.user}>{user}</span>
                 </span>
               </span>
             </Toolbar>
