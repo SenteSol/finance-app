@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import setAuthToken from "../../../utils/setAuthToken";
 import { baseUrl } from "../../../config/baseUrl";
 import { loginUserAction, registerUserAction, loginFailed, registerFailed } from "./auth.types";
 
@@ -8,7 +9,11 @@ export const loginUser = loginData => dispatch => {
     .post(`${baseUrl}/auth/login`, loginData)
     .then(res => {
       const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
       const decoded = jwt_decode(token);
+      decoded.token = token;
+
       dispatch(loginUserAction(decoded));
     })
     .catch(err => {
