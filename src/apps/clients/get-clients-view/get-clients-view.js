@@ -13,7 +13,7 @@ const ClientsView = props => {
   const clients = useSelector(state => state?.clients.clients);
   useEffect(async () => {
     await dispatch(getClients());
-  }, []);
+  }, [clients]);
   return (
     <ContentUI props={props}>
       <Grid

@@ -28,11 +28,6 @@ export default function GetClients({ clients }) {
     setPage(0);
   };
 
-  // const onDeleteClick = id => {
-  //   // eslint-disable-next-line no-console
-  //   console.log(id);
-  // };
-
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -69,7 +64,7 @@ export default function GetClients({ clients }) {
                   </TableCell>
                   <TableCell key={clientId} align={client.align}>
                     <CreateIcon className={classes.actionEditIcons} />
-                    <SimpleModal clientId={clientId} />
+                    <SimpleModal clientId={clientId} clientName={clientName} />
                   </TableCell>
                 </TableRow>
               );

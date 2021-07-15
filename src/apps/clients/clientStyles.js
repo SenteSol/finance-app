@@ -39,6 +39,7 @@ export const useStyles = makeStyles(() => ({
   actionEditIcons: {
     color: "#54BCCF",
     marginRight: "20px",
+    transition: "color 1000ms",
     "&:hover": {
       cursor: "pointer",
       color: "black"
