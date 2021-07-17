@@ -38,7 +38,7 @@ export default function ContentUI({ children, props: { history } }) {
   const classesBase = useStylesBase();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const screenSize = window.matchMedia("(max-width: 1080px)");
+  const screenSize = window.matchMedia("(max-width: 998px)");
 
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {

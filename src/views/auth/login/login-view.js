@@ -9,7 +9,7 @@ import Logo from "../../../components/logo";
 import { closeOptions } from "../../../utils/snackbar.styles";
 import { loginUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";
-import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/apps/auth";
+import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/views/auth";
 
 const LoginView = ({ history }) => {
   const [closeSnackbar] = useSnackbar(closeOptions);

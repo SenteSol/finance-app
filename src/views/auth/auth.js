@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import LoginView from "../apps/auth/login";
-import RegisterView from "../apps/auth/registration";
+import LoginView from "./login";
+import RegisterView from "./registration";
 
 const Authentication = ({ match }) => (
   <div>
