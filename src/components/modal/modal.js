@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Modal, Grid } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import { useStyles } from "./modalStyles";
-import { deleteClient } from "../../apps/clients/actions/client.actions";
+import { deleteClient } from "../../views/clients/actions/client.actions";
 
 const rand = () => Math.round(Math.random() * 20) - 10;
 

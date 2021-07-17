@@ -1,43 +1,59 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useSnackbar } from "react-simple-snackbar";
-import { CssBaseline, Typography, Container, Grid } from "@material-ui/core";
-import LoginForm from "./login-form";
-import Logo from "../../../components/logo";
+import { Container, CssBaseline, Typography, Grid } from "@material-ui/core";
+import RegisterForm from "./register-form";
 import { closeOptions } from "../../../utils/snackbar.styles";
-import { loginUser } from "../actions/auth.actions";
+import { registerUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";
-import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/apps/auth";
+import {
+  CONFIRM_PASSWORD_REQUIRED,
+  EMAIL_REQUIRED,
+  FIRST_NAME_REQUIRED,
+  INVALID_EMAIL_ADDRESS,
+  LAST_NAME_REQUIRED,
+  PASSWORD_REQUIRED
+} from "../../../constants/views/auth";
+import Logo from "../../../components/logo/logo-view";
 
-const LoginView = ({ history }) => {
+const RegisterView = () => {
+  const history = useHistory();
   const [closeSnackbar] = useSnackbar(closeOptions);
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
-    if (Object.keys(authState?.error).length > 0) {
+    if (Object.keys(authState.error).length > 0) {
       closeSnackbar(Object.values(authState.error)[0]);
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");
     }
-  }, [history, authState]);
+  }, [authState]);
 
   const classes = useStyles();
-  const defaultValues = { email: "", password: "" };
+
+  const defaultValues = { firstName: "", lastName: "", email: "", password: "", confirmPassword: "" };
 
   const yupObject = Yup.object({
+    firstName: Yup.string().required(FIRST_NAME_REQUIRED),
+    lastName: Yup.string().required(LAST_NAME_REQUIRED),
     email: Yup.string().email(INVALID_EMAIL_ADDRESS).required(EMAIL_REQUIRED),
-    password: Yup.string().required(PASSWORD_REQUIRED)
+    password: Yup.string().required(PASSWORD_REQUIRED),
+    confirmPassword: Yup.string().required(CONFIRM_PASSWORD_REQUIRED)
   });
 
   const handleSubmit = values => {
-    const { email, password } = values;
+    const { firstName, lastName, email, password, confirmPassword } = values;
     const jsonData = {
+      firstName,
+      lastName,
       email,
-      password
+      password,
+      confirmPassword
     };
-    dispatch(loginUser(jsonData));
+    dispatch(registerUser(jsonData));
   };
 
   return (
@@ -51,18 +67,20 @@ const LoginView = ({ history }) => {
         </Grid>
         <Grid container justify="flex-start">
           <Typography component="h1" variant="h5" className={classes.authTitle}>
-            Welcome back
+            Sign Up
           </Typography>
         </Grid>
-        <Typography component="h3" variant="h7" className={classes.authMessage}>
-          Please enter your email address and password to access your dashboard.
-        </Typography>
+        <Grid container justify="flex-start">
+          <Typography component="h3" variant="h7" className={classes.authMessage}>
+            Register a new account.
+          </Typography>
+        </Grid>
         <Formik initialValues={defaultValues} validationSchema={yupObject} onSubmit={handleSubmit}>
-          {formik => <LoginForm formik={formik} />}
+          {formik => <RegisterForm formik={formik} />}
         </Formik>
       </div>
     </Container>
   );
 };
 
-export default LoginView;
+export default RegisterView;

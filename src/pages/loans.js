@@ -1,11 +1,14 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import LoansView from "../apps/loans/loansView";
+import { Route, useRouteMatch, Switch } from "react-router-dom";
+import LoansView from "../views/loans/loansView";
 
-const Loans = ({ match }) => (
-  <div>
-    <Route exact path={`${match.path}`} component={LoansView} />
-  </div>
-);
+const Loans = () => {
+  const { path } = useRouteMatch();
+  return (
+    <Switch>
+      <Route exact path={`${path}`} component={LoansView} />
+    </Switch>
+  );
+};
 
 export default Loans;

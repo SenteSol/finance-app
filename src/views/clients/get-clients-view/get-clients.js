@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Paper,
   Table,
@@ -11,8 +12,8 @@ import {
 } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import SimpleModal from "../../../components/modal/modal";
-import { columns } from "../../../constants/apps/clients";
-import { useStyles } from "../clientStyles";
+import { columns } from "../../../constants/views/clients";
+import { useStyles } from "./clientStyles";
 
 export default function GetClients({ clients }) {
   const classes = useStyles();
@@ -30,7 +31,7 @@ export default function GetClients({ clients }) {
 
   return (
     <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
+      <TableContainer className={classes.container} id="clientTable">
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow className={classes.tableHead}>
@@ -63,7 +64,9 @@ export default function GetClients({ clients }) {
                     {country}
                   </TableCell>
                   <TableCell key={clientId} align={client.align}>
-                    <CreateIcon className={classes.actionEditIcons} />
+                    <Link to={{ pathname: `/clients/edit-client/${clientId}/` }} className={classes.link}>
+                      <CreateIcon className={classes.actionEditIcons} />
+                    </Link>
                     <SimpleModal clientId={clientId} clientName={clientName} />
                   </TableCell>
                 </TableRow>

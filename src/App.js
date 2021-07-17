@@ -5,10 +5,10 @@ import SnackbarProvider from "react-simple-snackbar";
 import { Provider } from "react-redux";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { persistor, store } from "./redux/combineStore";
-import Authentication from "./pages/auth";
-import DashBoard from "./pages/dashboard";
-import Clients from "./pages/clients";
+import Authentication from "./views/auth";
+import Dashboard from "./pages/dashboard";
 import Loans from "./pages/loans";
+import Clients from "./pages/clients";
 
 export const theme = createMuiTheme({
   typography: {
@@ -24,9 +24,9 @@ function App() {
           <SnackbarProvider>
             <Router>
               <Switch>
-                <Route exact path="/loans" component={Loans} />
-                <Route exact path="/clients" component={Clients} />
-                <Route exact path="/dashboard" component={DashBoard} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/clients" component={Clients} />
+                <Route path="/loans" component={Loans} />
                 <Route path="/" component={Authentication} />
               </Switch>
             </Router>

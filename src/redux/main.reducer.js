@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import authReducer from "../apps/auth/auth.reducer";
-import clientReducer from "../apps/clients/clients.reducer";
+import authReducer from "../views/auth/auth.reducer";
+import clientReducer from "../views/clients/clients.reducer";
 
 const mainReducer = combineReducers({
   authentication: authReducer,

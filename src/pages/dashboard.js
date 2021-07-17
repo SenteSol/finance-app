@@ -1,11 +1,14 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import DashboardView from "../apps/dashboard/dashboardView";
+import { Route, useRouteMatch, Switch } from "react-router-dom";
+import DashboardView from "../views/dashboard/dashboardView";
 
-const DashBoard = ({ match }) => (
-  <div>
-    <Route exact path={`${match.path}`} component={DashboardView} />
-  </div>
-);
+const Dashboard = () => {
+  const { path } = useRouteMatch();
+  return (
+    <Switch>
+      <Route exact path={`${path}`} component={DashboardView} />
+    </Switch>
+  );
+};
 
-export default DashBoard;
+export default Dashboard;
