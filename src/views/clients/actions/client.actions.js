@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../../config/baseUrl";
-import { getClientsAction, getAClientAction, clientActionFailed, deleteClientAction } from "./client.types";
+import { getClientsAction, clientActionFailed, deleteClientAction, addClientAction } from "./client.types";
 
 export const getClients = () => dispatch => {
   axios
@@ -13,11 +13,11 @@ export const getClients = () => dispatch => {
     });
 };
 
-export const getClient = () => dispatch => {
+export const addClient = clientData => dispatch => {
   axios
-    .get(`${baseUrl}/client/manager/email`)
+    .post(`${baseUrl}/client`, clientData)
     .then(res => {
-      dispatch(getAClientAction(res.data));
+      dispatch(addClientAction(res.data));
     })
     .catch(err => {
       dispatch(clientActionFailed(err.response.data));
@@ -31,4 +31,5 @@ export const deleteClient = clientId => dispatch => {
     .catch(err => {
       dispatch(clientActionFailed(err.response.data));
     });
+  getClients();
 };

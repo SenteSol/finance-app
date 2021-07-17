@@ -15,7 +15,7 @@ import {
   INVALID_EMAIL_ADDRESS,
   LAST_NAME_REQUIRED,
   PASSWORD_REQUIRED
-} from "../../../constants/apps/auth";
+} from "../../../constants/views/auth";
 import Logo from "../../../components/logo/logo-view";
 
 const RegisterView = ({ history }) => {
