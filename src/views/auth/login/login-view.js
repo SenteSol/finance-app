@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -11,7 +12,8 @@ import { loginUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";
 import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/views/auth";
 
-const LoginView = ({ history }) => {
+const LoginView = () => {
+  const history = useHistory();
   const [closeSnackbar] = useSnackbar(closeOptions);
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
@@ -21,7 +23,7 @@ const LoginView = ({ history }) => {
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");
     }
-  }, [history, authState]);
+  }, [authState]);
 
   const classes = useStyles();
   const defaultValues = { email: "", password: "" };

@@ -7,8 +7,7 @@ export const columns = [
   { id: "name", label: "", minWidth: 170 }
 ];
 
-export const FIRST_NAME_REQUIRED = "First name required";
-export const LAST_NAME_REQUIRED = "Last name required";
+export const CLIENT_NAME_REQUIRED = "Client name required";
 export const ADDRESS_REQUIRED = "Address required";
 export const CITY_REQUIRED = "City required";
 export const COUNTRY_REQUIRED = "County required";

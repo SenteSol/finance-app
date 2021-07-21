@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Paper,
   Table,
@@ -63,7 +64,9 @@ export default function GetClients({ clients }) {
                     {country}
                   </TableCell>
                   <TableCell key={clientId} align={client.align}>
-                    <CreateIcon className={classes.actionEditIcons} />
+                    <Link to={{ pathname: `/clients/edit-client/${clientId}/` }} className={classes.link}>
+                      <CreateIcon className={classes.actionEditIcons} />
+                    </Link>
                     <SimpleModal clientId={clientId} clientName={clientName} />
                   </TableCell>
                 </TableRow>

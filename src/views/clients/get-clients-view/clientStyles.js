@@ -44,5 +44,8 @@ export const useStyles = makeStyles(() => ({
       cursor: "pointer",
       color: "black"
     }
+  },
+  link: {
+    textDecoration: "none"
   }
 }));

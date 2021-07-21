@@ -6,10 +6,9 @@ import { Provider } from "react-redux";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { persistor, store } from "./redux/combineStore";
 import Authentication from "./views/auth";
-import DashboardView from "./views/dashboard/dashboardView";
-import ClientsView from "./views/clients/get-clients-view";
-import LoansView from "./views/loans/loansView";
-import AddClientView from "./views/clients/add-client-view/add-client-view";
+import Dashboard from "./pages/dashboard";
+import Loans from "./pages/loans";
+import Clients from "./pages/clients";
 
 export const theme = createMuiTheme({
   typography: {
@@ -25,10 +24,9 @@ function App() {
           <SnackbarProvider>
             <Router>
               <Switch>
-                <Route exact path="/dashboard" component={DashboardView} />
-                <Route exact path="/clients" component={ClientsView} />
-                <Route exact path="/clients/add-client" component={AddClientView} />
-                <Route exact path="/loans" component={LoansView} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/clients" component={Clients} />
+                <Route path="/loans" component={Loans} />
                 <Route path="/" component={Authentication} />
               </Switch>
             </Router>

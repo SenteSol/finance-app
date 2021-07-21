@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -18,7 +19,8 @@ import {
 } from "../../../constants/views/auth";
 import Logo from "../../../components/logo/logo-view";
 
-const RegisterView = ({ history }) => {
+const RegisterView = () => {
+  const history = useHistory();
   const [closeSnackbar] = useSnackbar(closeOptions);
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
@@ -28,7 +30,7 @@ const RegisterView = ({ history }) => {
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");
     }
-  }, [history, authState]);
+  }, [authState]);
 
   const classes = useStyles();
 

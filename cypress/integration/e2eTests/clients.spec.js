@@ -9,9 +9,8 @@ describe("Login", () => {
     cy.get("#email").type(email).get("#password").type(password).get("#loginForm").submit();
     cy.wait("@login").visit("/clients").get("#clientTable").should("exist");
   });
-  it("should get add a client", () => {
-    const firstName = "cypress";
-    const lastName = "user";
+  it("should add a client", () => {
+    const clientName = "cypress user";
     const email = "cypressUser@gmail.com";
     const address = "Najeera";
     const city = "Kampala";
@@ -20,10 +19,8 @@ describe("Login", () => {
     cy.visit("/clients")
       .get(".makeStyles-addButton-3")
       .click()
-      .get("#firstName")
-      .type(firstName)
-      .get("#lastName")
-      .type(lastName)
+      .get("#client")
+      .type(clientName)
       .get("#email")
       .type(email)
       .get("#address")
@@ -34,9 +31,9 @@ describe("Login", () => {
       .type(country)
       .get("#contact")
       .type(contact)
-      .get(".makeStyles-form-42")
+      .get("#save")
       .submit()
-      .get(".makeStyles-close-45")
+      .get("#close")
       .click()
       .get("#clientTable")
       .should("exist");

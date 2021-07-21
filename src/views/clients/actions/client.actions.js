@@ -1,12 +1,30 @@
 import axios from "axios";
 import { baseUrl } from "../../../config/baseUrl";
-import { getClientsAction, clientActionFailed, deleteClientAction, addClientAction } from "./client.types";
+import {
+  getClientsAction,
+  clientActionFailed,
+  deleteClientAction,
+  addClientAction,
+  getAClientAction,
+  editClientAction
+} from "./client.types";
 
 export const getClients = () => dispatch => {
   axios
     .get(`${baseUrl}/client/manager/email`)
     .then(res => {
       dispatch(getClientsAction(res.data));
+    })
+    .catch(err => {
+      dispatch(clientActionFailed(err.response.data));
+    });
+};
+
+export const getClient = clientId => dispatch => {
+  axios
+    .get(`${baseUrl}/client/${clientId}`)
+    .then(res => {
+      dispatch(getAClientAction(res.data));
     })
     .catch(err => {
       dispatch(clientActionFailed(err.response.data));
@@ -24,6 +42,15 @@ export const addClient = clientData => dispatch => {
     });
 };
 
+export const editClient = (jsonData, clientId) => dispatch => {
+  axios
+    .put(`${baseUrl}/client/${clientId}`, jsonData)
+    .then(() => dispatch(editClientAction()))
+    .catch(err => {
+      dispatch(clientActionFailed(err.response.data));
+    });
+};
+
 export const deleteClient = clientId => dispatch => {
   axios
     .delete(`${baseUrl}/client/${clientId}`)
@@ -31,5 +58,4 @@ export const deleteClient = clientId => dispatch => {
     .catch(err => {
       dispatch(clientActionFailed(err.response.data));
     });
-  getClients();
 };
