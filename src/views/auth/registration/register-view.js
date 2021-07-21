@@ -3,10 +3,8 @@ import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useSnackbar } from "react-simple-snackbar";
 import { Container, CssBaseline, Typography, Grid } from "@material-ui/core";
 import RegisterForm from "./register-form";
-import { closeOptions } from "../../../utils/snackbar.styles";
 import { registerUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";
 import {
@@ -21,12 +19,11 @@ import Logo from "../../../components/logo/logo-view";
 
 const RegisterView = () => {
   const history = useHistory();
-  const [closeSnackbar] = useSnackbar(closeOptions);
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
     if (Object.keys(authState.error).length > 0) {
-      closeSnackbar(Object.values(authState.error)[0]);
+      console.warn(Object.values(authState.error)[0]);
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");
     }

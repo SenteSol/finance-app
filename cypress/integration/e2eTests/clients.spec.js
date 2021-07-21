@@ -1,6 +1,6 @@
 import React from "react";
 
-describe("Login", () => {
+describe("Client", () => {
   it("should get all clients for the user", () => {
     cy.intercept("Post", "/auth/login").as("login");
     const email = "bgpeter@gmail.com";
@@ -32,7 +32,7 @@ describe("Login", () => {
       .get("#contact")
       .type(contact)
       .get("#save")
-      .submit()
+      .click()
       .get("#close")
       .click()
       .get("#clientTable")

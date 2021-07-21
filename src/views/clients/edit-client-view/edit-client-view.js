@@ -41,12 +41,13 @@ const EditClientView = props => {
     clientContactNumber: Yup.string()
   });
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values, onSubmitProps) => {
     const { clientName, address, city, country, clientContactEmail, clientContactNumber } = values;
 
     const jsonData = { clientName, address, city, country, clientContactEmail, clientContactNumber };
 
     dispatch(editClient(jsonData, id));
+    onSubmitProps.resetForm();
   };
 
   const closePage = () => {

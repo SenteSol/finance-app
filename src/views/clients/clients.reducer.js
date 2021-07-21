@@ -1,7 +1,7 @@
 import { clientActionTypes } from "./actions/client.types";
 
 const initialState = {
-  clients: [false],
+  clients: [],
   client: {},
   error: "",
   delete: false
