@@ -3,23 +3,20 @@ import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useSnackbar } from "react-simple-snackbar";
 import { CssBaseline, Typography, Container, Grid } from "@material-ui/core";
 import LoginForm from "./login-form";
 import Logo from "../../../components/logo";
-import { closeOptions } from "../../../utils/snackbar.styles";
 import { loginUser } from "../actions/auth.actions";
 import { useStyles } from "../authStyles";
 import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/views/auth";
 
 const LoginView = () => {
   const history = useHistory();
-  const [closeSnackbar] = useSnackbar(closeOptions);
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
     if (Object.keys(authState?.error).length > 0) {
-      closeSnackbar(Object.values(authState.error)[0]);
+      console.warn(Object.values(authState.error)[0]);
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");
     }

@@ -68,12 +68,12 @@ const EditClient = ({ onClick, formik }) => {
           />
         </Grid>
         <Grid item xs={12} sm={6} className={classes.grid}>
-          <Button type="submit" fullWidth variant="contained" className={classes.save}>
+          <Button type="submit" fullWidth variant="contained" className={classes.save} id="save">
             <strong>Save</strong>
           </Button>
         </Grid>
         <Grid item xs={12} sm={6} className={classes.grid}>
-          <Button fullWidth variant="contained" className={classes.close} onClick={onClick}>
+          <Button fullWidth variant="contained" className={classes.close} onClick={onClick} id="close">
             <strong>Close</strong>
           </Button>
         </Grid>
