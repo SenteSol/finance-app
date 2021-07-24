@@ -2,8 +2,10 @@ import axios from "axios";
 import { baseUrl } from "../../../config/baseUrl";
 
 import { getLoansAction, addLoanAction, loanActionFailed } from "./loan.types";
+import { loadingAction } from "../../../redux/loader/loading.actions";
 
 export const getLoans = () => dispatch => {
+  dispatch(loadingAction());
   axios
     .get(`${baseUrl}/finance/manager/email`)
     .then(res => {
