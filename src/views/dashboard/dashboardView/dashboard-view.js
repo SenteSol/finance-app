@@ -24,7 +24,7 @@ const DashboardView = props => {
       }
       if (loans.length) {
         setLoading(loader);
-        const euro = await getCurrencyRates("EUR", "UGX");
+        const euro = await getCurrencyRates("EUR", "USD");
         const dollar = await getCurrencyRates("USD", "UGX");
         setValuedCustomers(getMostValuedCustomers(loans, euroRate === undefined, dollarRate === undefined));
         setCurrencyDemand(calculatePopularCurrency(loans, euroRate === undefined, dollarRate === undefined));
