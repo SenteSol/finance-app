@@ -22,19 +22,15 @@ const DashboardView = props => {
       if (loading) {
         dispatch(getLoans());
       }
-      if (euroRate === 0) {
-        const rate = await getCurrencyRates("EUR", "UGX");
-        setEuroRate(rate);
-      }
-      if (dollarRate === 0) {
-        const rate = await getCurrencyRates("USD", "UGX");
-        setDollarRate(rate);
-      }
       if (loans.length) {
         setLoading(loader);
+        const euro = await getCurrencyRates("EUR", "UGX");
+        const dollar = await getCurrencyRates("USD", "UGX");
         setValuedCustomers(getMostValuedCustomers(loans, euroRate === undefined, dollarRate === undefined));
         setCurrencyDemand(calculatePopularCurrency(loans, euroRate === undefined, dollarRate === undefined));
         setMonthlyRevenue(calculateRevenuePerMonth(loans, euroRate === undefined, dollarRate === undefined));
+        setEuroRate(euro);
+        setDollarRate(dollar);
       }
     })();
   }, [loans]);

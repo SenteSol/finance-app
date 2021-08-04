@@ -11,14 +11,6 @@ const Dashboard = ({ clients, currency, monthlyRevenue }) => {
   const [clientData, setClientData] = useState([]);
   const classes = useStyles();
 
-  // const clients = {
-  //   "Xenic Mark": 19584,
-  //   "Test User": 4507.042253521126,
-  //   "Ivan Nowamukama": 4333.802816901409,
-  //   "Africa power and equipment LTD": 1900,
-  //   "Aretha Mayangi": 0
-  // };
-
   useEffect(() => {
     refactoredClientData(clients);
   }, [clients]);
