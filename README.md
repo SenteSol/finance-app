@@ -9,6 +9,8 @@
 
 - run either `yarn` or `npm intsall` to install all dependencies
 
+- Add the required `env` variables
+
 - Run `yarn start` or `npm start` depending on your installation
 
 - Test the functionality out in the browser that you have been redirected to.

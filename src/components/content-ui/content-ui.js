@@ -69,6 +69,7 @@ export default function ContentUI({ children, props: { history } }) {
   const handleMiniScreen = () => {
     setMiniScreen(!miniScreen);
   };
+
   const SmallScreen = (
     <div className={classesBase.smallScreen}>
       <Typography className={classesBase.smallScreenTitle}>Sorry your screen is too small.</Typography>
