@@ -10,14 +10,10 @@ const options = (from = "EUR", to = "UGX") => ({
   }
 });
 
-export const getCurrencyRates = (from, to) => {
-  // options(from, to);
-  //
-  // return true;
+export const getCurrencyRates = (from, to) =>
   axios
     .request(options(from, to))
-    .then(response => response.data.rates.UGX.rate)
+    .then(response => response.data.rates[to].rate)
     .catch(error => {
       console.error(error);
     });
-};
