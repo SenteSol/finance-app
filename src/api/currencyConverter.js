@@ -5,8 +5,8 @@ const options = (from = "EUR", to = "UGX") => ({
   url: "https://currency-converter5.p.rapidapi.com/currency/convert",
   params: { format: "json", from, to, amount: "3500" },
   headers: {
-    "x-rapidapi-key": "a97a553b16mshb88827a8c712780p14e3c2jsnfa573cf2c779",
-    "x-rapidapi-host": "currency-converter5.p.rapidapi.com"
+    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY,
+    "x-rapidapi-host": process.env.REACT_APP_RAPID_API_HOST
   }
 });
 
