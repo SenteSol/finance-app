@@ -2,7 +2,8 @@ import { authActionTypes } from "./actions/auth.types";
 
 const initialState = {
   isAuthenticated: false,
-  error: ""
+  error: "",
+  currentUser: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -34,6 +35,13 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+        currentUser: {}
+      };
+    case authActionTypes.LOGOUT_USER:
+      return {
+        ...state,
+        isAuthenticated: false,
+        error: {},
         currentUser: {}
       };
     default:

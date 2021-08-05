@@ -143,6 +143,16 @@ export const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: "#00aba6"
   },
+  sideBarDivider: {
+    position: "absolute",
+    bottom: "100px",
+    left: 0,
+    right: 0
+  },
+  sideBarIcons: {
+    position: "absolute",
+    bottom: "12px"
+  },
   icon: {
     color: "#00aba6"
   }

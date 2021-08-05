@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { useTheme } from "@material-ui/core/styles";
 import {
@@ -24,14 +25,16 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PeopleIcon from "@material-ui/icons/People";
 import AvTimerIcon from "@material-ui/icons/AvTimer";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AppsIcon from "@material-ui/icons/Apps";
 import Logo from "../logo/logo-view";
 import { username } from "./utils";
-import checkForToken from "../../utils/getToken";
+import { checkForToken } from "../../utils/getToken";
 import { useStyles, useStylesBase } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
+import { logoutUser } from "../../views/auth/actions/auth.actions";
 
-export default function ContentUI({ children, props: { history } }) {
+export default function ContentUI({ children }) {
   const [user, setUser] = useState("");
   const [miniScreen, setMiniScreen] = useState(true);
   const classes = useStyles();
@@ -39,6 +42,8 @@ export default function ContentUI({ children, props: { history } }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const screenSize = window.matchMedia("(max-width: 998px)");
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
@@ -68,6 +73,11 @@ export default function ContentUI({ children, props: { history } }) {
 
   const handleMiniScreen = () => {
     setMiniScreen(!miniScreen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    history.push("/");
   };
 
   const SmallScreen = (
@@ -147,15 +157,31 @@ export default function ContentUI({ children, props: { history } }) {
             <Divider />
             <List>
               {["Dashboard", "Clients", "Loans"].map((text, index) => (
-                <ListItem button key={text}>
+                <ListItem button key={index}>
                   <Link to={`/${text.toLowerCase()}`} className={classes.contentLink}>
                     <ListItemIcon className={classesBase.root}>
-                      {index === 0 ? <AvTimerIcon /> : index === 1 ? <PeopleIcon /> : <AppsIcon />}
+                      {index === 0 ? (
+                        <AvTimerIcon className={classes.sideBarIcons} />
+                      ) : index === 1 ? (
+                        <PeopleIcon className={classes.sideBarIcons} />
+                      ) : (
+                        <AppsIcon className={classes.sideBarIcons} />
+                      )}
                     </ListItemIcon>{" "}
                     <ListItemText primary={text} />{" "}
                   </Link>
                 </ListItem>
               ))}
+            </List>
+            <List className={classes.sideBarDivider}>
+              <ListItem button onClick={handleLogout}>
+                <Link to="#" className={classes.contentLink}>
+                  <ListItemIcon className={classesBase.root}>
+                    <ExitToAppIcon className={classes.sideBarIcons} />
+                  </ListItemIcon>
+                  <ListItemText primary="Log Out" />
+                </Link>
+              </ListItem>
             </List>
             <Divider />
           </Drawer>

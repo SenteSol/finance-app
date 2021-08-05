@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../../utils/setAuthToken";
 import { baseUrl } from "../../../config/baseUrl";
-import { loginUserAction, registerUserAction, loginFailed, registerFailed } from "./auth.types";
+import { loginUserAction, registerUserAction, loginFailed, registerFailed, logoutUserAction } from "./auth.types";
 
 export const loginUser = loginData => dispatch => {
   axios
@@ -26,4 +26,10 @@ export const registerUser = registrationData => dispatch => {
     .post(`${baseUrl}/auth`, registrationData)
     .then(res => dispatch(registerUserAction(res.data)))
     .catch(err => dispatch(registerFailed(err.response.data)));
+};
+
+export const logoutUser = () => dispatch => {
+  localStorage.removeItem("jwtToken");
+  setAuthToken(false);
+  dispatch(logoutUserAction());
 };
