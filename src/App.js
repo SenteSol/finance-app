@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { persistor, store } from "./redux/combineStore";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import store from "./redux/combineStore";
 import Authentication from "./views/auth";
 import Dashboard from "./pages/dashboard";
 import Loans from "./pages/loans";
 import Clients from "./pages/clients";
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   typography: {
     fontFamily: ["Poppins", "Roboto"].join(",")
   }
@@ -18,18 +17,16 @@ export const theme = createMuiTheme({
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Switch>
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/clients" component={Clients} />
-              <Route path="/loans" component={Loans} />
-              <Route path="/" component={Authentication} />
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </PersistGate>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Switch>
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/clients" component={Clients} />
+            <Route path="/loans" component={Loans} />
+            <Route path="/" component={Authentication} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </Provider>
   );
 }

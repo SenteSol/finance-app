@@ -2,7 +2,8 @@ export const authActionTypes = {
   LOGIN_USER: "LOGIN_USER",
   LOGIN_FAILED: "LOGIN_FAILED",
   REGISTER_USER: "REGISTER_USER",
-  REGISTER_FAILED: "REGISTER_FAILED"
+  REGISTER_FAILED: "REGISTER_FAILED",
+  LOGOUT_USER: "LOGOUT_USER"
 };
 
 export const loginUserAction = payload => ({
@@ -23,4 +24,8 @@ export const registerUserAction = payload => ({
 export const registerFailed = payload => ({
   type: authActionTypes.REGISTER_FAILED,
   payload
+});
+
+export const logoutUserAction = () => ({
+  type: authActionTypes.LOGOUT_USER
 });
