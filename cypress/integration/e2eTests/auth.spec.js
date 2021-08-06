@@ -25,7 +25,7 @@ describe("Login", () => {
       .should("exist");
   });
   it("It should login a user", () => {
-    const email = "bgpeter@gmail.com";
+    const email = "testuser@gmail.com";
     const password = "P@ssw0rd";
     cy.visit("/");
     cy.get("#email")
