@@ -19,15 +19,11 @@ const areaChart = revenue => ({
 
   subtitle: "",
   xAxis: {
-    type: "datetime",
-    allowDecimals: false,
-    accessibility: {
-      rangeDescription: "Range: 1940 to 2017."
-    }
+    type: "datetime"
   },
   yAxis: {
     title: {
-      text: `Revenue for the months of ${new Date().getFullYear()}`
+      text: `Revenue for the past 12 months`
     },
     labels: {
       formatter() {
@@ -39,7 +35,7 @@ const areaChart = revenue => ({
     pointFormat: "{series.name} earned revenue of <b>${point.y:.0f}</b><br/>"
   },
   plotOptions: {
-    area: {
+    series: {
       pointStart: Date.UTC(currentDate.getUTCFullYear(), currentDate.getUTCMonth() - 12, currentDate.getUTCDate()),
       pointInterval: 24 * 3600 * 1000 * 30,
       marker: {

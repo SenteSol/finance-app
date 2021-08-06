@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 const donut = currency => ({
   chart: {
     plotBackgroundColor: null,
@@ -9,7 +10,7 @@ const donut = currency => ({
     enabled: false
   },
   title: {
-    text: `Currency <br>shares<br>2021`,
+    text: `Currency <br>shares<br>${dayjs().year()}`,
     align: "center",
     verticalAlign: "middle",
     y: 60
