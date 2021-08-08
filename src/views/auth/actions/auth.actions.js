@@ -1,16 +1,13 @@
-import axios from "axios";
 import jwt_decode from "jwt-decode";
-import setAuthToken from "../../../utils/setAuthToken";
-import { baseUrl } from "../../../config/baseUrl";
 import { loginUserAction, registerUserAction, loginFailed, registerFailed, logoutUserAction } from "./auth.types";
+import { instance } from "../../../config/client";
 
 export const loginUser = loginData => dispatch => {
-  axios
-    .post(`${baseUrl}/auth/login`, loginData)
+  instance
+    .post("auth/login", loginData)
     .then(res => {
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
-      setAuthToken(token);
       const decoded = jwt_decode(token);
       decoded.token = token;
 
@@ -22,14 +19,13 @@ export const loginUser = loginData => dispatch => {
 };
 
 export const registerUser = registrationData => dispatch => {
-  axios
-    .post(`${baseUrl}/auth`, registrationData)
+  instance
+    .post("auth", registrationData)
     .then(res => dispatch(registerUserAction(res.data)))
     .catch(err => dispatch(registerFailed(err.response.data)));
 };
 
 export const logoutUser = () => dispatch => {
   localStorage.removeItem("jwtToken");
-  setAuthToken(false);
   dispatch(logoutUserAction());
 };

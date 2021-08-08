@@ -29,7 +29,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AppsIcon from "@material-ui/icons/Apps";
 import Logo from "../logo/logo-view";
 import { username } from "./utils";
-import { checkForToken } from "../../utils/getToken";
 import { useStyles, useStylesBase } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
 import { logoutUser } from "../../views/auth/actions/auth.actions";
@@ -96,8 +95,6 @@ export default function ContentUI({ children }) {
       </Grid>
     </div>
   );
-
-  checkForToken();
 
   return (
     <>
