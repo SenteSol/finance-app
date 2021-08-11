@@ -34,7 +34,7 @@ const RegisterForm = props => {
           />
         </Grid>
         <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-          Sign In
+          Sign Up
         </Button>
         <Grid container justify="flex-start">
           <Grid item>
