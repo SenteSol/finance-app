@@ -6,6 +6,7 @@ import store from "./redux/combineStore";
 import Authentication from "./views/auth";
 import Dashboard from "./pages/dashboard";
 import Loans from "./pages/loans";
+import Payments from "./pages/payments";
 import Clients from "./pages/clients";
 
 export const theme = createTheme({
@@ -23,6 +24,7 @@ function App() {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/clients" component={Clients} />
             <Route path="/loans" component={Loans} />
+            <Route path="/payments" component={Payments} />
             <Route path="/" component={Authentication} />
           </Switch>
         </Router>
