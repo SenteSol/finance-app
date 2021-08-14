@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Paper,
   Table,
@@ -9,6 +10,7 @@ import {
   TablePagination,
   TableRow
 } from "@material-ui/core";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import { columns } from "../../../constants/views/loans";
 import { useStyles } from "./loansStyles";
 
@@ -41,19 +43,35 @@ const GetLoans = ({ loans }) => {
           <TableBody>
             {loans
               ? loans.map(loan => {
-                  const { loanId, client, amount, rate, dateDisbursed, months, interestAmount, totalOwed, comment } =
-                    loan;
+                  const {
+                    loanId,
+                    client,
+                    amount,
+                    pendingPrinciple,
+                    rate,
+                    dateDisbursed,
+                    months,
+                    interestAmount,
+                    totalOwed,
+                    comment
+                  } = loan;
 
                   return (
                     <TableRow hover role="checkbox" tabIndex={-1}>
                       <TableCell key={loanId}>{client}</TableCell>
                       <TableCell key={loanId}>{amount}</TableCell>
+                      <TableCell key={loanId}>{pendingPrinciple}</TableCell>
                       <TableCell key={loanId}>{rate}</TableCell>
                       <TableCell key={loanId}>{`${dateDisbursed}`}</TableCell>
                       <TableCell key={loanId}>{months}</TableCell>
                       <TableCell key={loanId}>{interestAmount}</TableCell>
                       <TableCell key={loanId}>{totalOwed}</TableCell>
                       <TableCell key={loanId}>{comment}</TableCell>
+                      <TableCell key={loanId}>
+                        <Link to={{ pathname: `/payments/${loanId}/` }} className={classes.link}>
+                          <VisibilityIcon className={classes.actionEditIcons} />
+                        </Link>
+                      </TableCell>
                     </TableRow>
                   );
                 })
