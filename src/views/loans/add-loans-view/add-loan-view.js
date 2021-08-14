@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import dayjs from "dayjs";
 import * as Yup from "yup";
+import { useSnackbar } from "react-simple-snackbar";
 import ContentUI from "../../../components/content-ui";
 import AddLoan from "./add-loan";
 import {
@@ -14,8 +15,10 @@ import {
 } from "../../../constants/views/loans";
 import { addLoan } from "../actions/loan.actions";
 import { getClients } from "../../clients/actions/client.actions";
+import { closeOptions } from "../../../utils/snackbar.styles";
 
 const AddLoanView = props => {
+  const [closeSnackbar] = useSnackbar(closeOptions);
   const history = useHistory();
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -28,7 +31,7 @@ const AddLoanView = props => {
   const loans = useSelector(state => state?.clients.clients);
   useEffect(() => {
     if (loanError?.message) {
-      console.warn(loanError.message);
+      closeSnackbar(loanError.message);
     }
     dispatch(getClients());
   }, []);
