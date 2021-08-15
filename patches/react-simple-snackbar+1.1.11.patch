@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-simple-snackbar/package.json b/node_modules/react-simple-snackbar/package.json
+index f0277bf..3589165 100644
+--- a/node_modules/react-simple-snackbar/package.json
++++ b/node_modules/react-simple-snackbar/package.json
+@@ -70,8 +70,8 @@
+     "jest": "^26.6.3",
+     "minimist": ">=1.2.2",
+     "prettier": "^1.19.1",
+-    "react": "^16.14.0",
+-    "react-dom": "^16.14.0",
++    "react": "^17.0.2",
++    "react-dom": "^17.0.2",
+     "rollup": "^1.32.1",
+     "rollup-plugin-babel": "^4.4.0",
+     "rollup-plugin-commonjs": "^10.1.0",
+@@ -83,8 +83,8 @@
+     "serialize-javascript": "^5.0.1"
+   },
+   "peerDependencies": {
+-    "react": "16.x",
+-    "react-dom": "16.x"
++    "react": "17.x",
++    "react-dom": "17.x"
+   },
+   "jest": {
+     "setupFilesAfterEnv": [

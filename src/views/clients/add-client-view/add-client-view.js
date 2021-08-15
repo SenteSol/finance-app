@@ -3,7 +3,9 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useSnackbar } from "react-simple-snackbar";
 import ContentUI from "../../../components/content-ui";
+import { closeOptions } from "../../../utils/snackbar.styles";
 import AddClient from "./add-client";
 import { addClient } from "../actions/client.actions";
 
@@ -17,13 +19,14 @@ import {
 } from "../../../constants/views/clients";
 
 const AddClientsView = props => {
+  const [closeSnackbar] = useSnackbar(closeOptions);
   const history = useHistory();
   const dispatch = useDispatch();
 
   const clientError = useSelector(state => state?.clients.error);
   useEffect(() => {
     if (clientError?.message) {
-      console.warn(clientError.message);
+      closeSnackbar(clientError.message);
     }
   }, [clientError]);
   const defaultValues = {
