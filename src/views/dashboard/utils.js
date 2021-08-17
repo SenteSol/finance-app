@@ -6,9 +6,9 @@ export const getMostValuedCustomers = (loans, euroRate, dollarRate) => {
   loans.forEach(loan => {
     const { client, interestAmount } = loan;
     const amount = convertCurrencyToInteger(interestAmount, euroRate, dollarRate);
-    if (Object.keys(largestClients).includes(loan.client)) {
-      largestClients[client] = parseInt(Object.values(largestClients), 10) + Number(amount);
-    } else {
+    if (Object.keys(largestClients).includes(loan.client) && amount !== 0) {
+      largestClients[client] = Number(Object.values(largestClients)) + Number(amount);
+    } else if (amount !== 0) {
       largestClients[client] = amount;
     }
   });
