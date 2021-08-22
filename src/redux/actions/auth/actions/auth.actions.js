@@ -1,5 +1,6 @@
 import jwt_decode from "jwt-decode";
 import { loginUserAction, registerUserAction, loginFailed, registerFailed, logoutUserAction } from "./auth.types";
+import { setTokenAction, clearTokenAction } from "../../../redux/token/token.types";
 import { instance } from "../../../../config/client";
 
 export const loginUser = loginData => dispatch => {
@@ -7,10 +8,10 @@ export const loginUser = loginData => dispatch => {
     .post("auth/login", loginData)
     .then(res => {
       const { token } = res.data;
-      localStorage.setItem("jwtToken", token);
       const decoded = jwt_decode(token);
       decoded.token = token;
 
+      dispatch(setTokenAction(token));
       dispatch(loginUserAction(decoded));
     })
     .catch(err => {
@@ -26,6 +27,6 @@ export const registerUser = registrationData => dispatch => {
 };
 
 export const logoutUser = () => dispatch => {
-  localStorage.removeItem("jwtToken");
+  dispatch(clearTokenAction());
   dispatch(logoutUserAction());
 };
