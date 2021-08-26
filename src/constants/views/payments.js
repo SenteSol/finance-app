@@ -6,6 +6,8 @@ export const columns = [
   { id: "name", label: "Comment", minWidth: 170 }
 ];
 
+export const section = "Payment";
+
 export const CURRENCY_REQUIRED = "Currency required";
 export const AMOUNT_REQUIRED = "Amount required";
 export const RATE_REQUIRED = "City required";

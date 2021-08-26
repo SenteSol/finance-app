@@ -3,7 +3,7 @@
 
 ## How to test the repository
 
-- Clone the repository from your terminal with command: `git clone https://github.com/myrdstom/listicle-react.git`
+- Clone the repository from your terminal with command: `git clone https://github.com/SenteSol/finance-app`
 
 - Make sure that you have `npm` or `yarn` installed
 
@@ -17,5 +17,5 @@
 
 
 ## Authentication Test Credentials
-- email: `testuser@gmail.com`
+- email: `test@gmail.com`
 - password: `P@ssw0rd` 

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Grid } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import AddIcon from "@material-ui/icons/Add";
-import GetPayments from "./get-payments";
+import { Grid } from "@material-ui/core";
 import ContentUI from "../../../components/content-ui";
 import { getPayments } from "../actions/payments.actions";
 import { useStyles } from "./paymentStyles";
+import TableList from "../../../components/table";
+import { columns, section } from "../../../constants/views/payments";
+import AddButton from "../../../components/addButton";
 
 const GetPaymentsView = props => {
   const {
@@ -14,6 +14,7 @@ const GetPaymentsView = props => {
       params: { id }
     }
   } = props;
+  const [allPayments, setAllPayments] = useState([]);
   const classes = useStyles();
   const dispatch = useDispatch();
   const payments = useSelector(state => state?.payments.payments);
@@ -21,6 +22,20 @@ const GetPaymentsView = props => {
   useEffect(() => {
     dispatch(getPayments(id));
   }, []);
+
+  useEffect(() => {
+    setAllPayments(cleanTableData(payments));
+  }, [payments]);
+
+  const cleanTableData = tableData =>
+    tableData.map(data => ({
+      id: data.paymentId,
+      amountPending: data.amountPending,
+      previousPendingAmount: data.previousPendingAmount,
+      amountPaid: data.amountPaid,
+      datePaid: data.datePaid,
+      comment: data.comment
+    }));
   return (
     <ContentUI props={props}>
       <Grid
@@ -32,15 +47,8 @@ const GetPaymentsView = props => {
         spacing={3}
         className={classes.clientGrid}
       >
-        <span className={classes.addButtonComponent}>
-          <Link to={{ pathname: `/payments/add-payment/${id}` }} className={classes.link}>
-            <Button variant="contained" className={classes.addButton}>
-              <AddIcon className={classes.addIcon} />
-              <strong>Add Payment</strong>
-            </Button>
-          </Link>
-        </span>
-        <GetPayments payments={payments} />
+        <AddButton pathname={`/payments/add-payment/${id}`} section={section} />
+        <TableList tableBodies={allPayments} tableHeaders={columns} />
       </Grid>
     </ContentUI>
   );

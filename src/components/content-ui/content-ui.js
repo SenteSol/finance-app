@@ -33,7 +33,7 @@ import { useStyles, useStylesBase } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
 import { logoutUser } from "../../views/auth/actions/auth.actions";
 
-export default function ContentUI({ children }) {
+const ContentUI = ({ children }) => {
   const [user, setUser] = useState("");
   const [miniScreen, setMiniScreen] = useState(true);
   const classes = useStyles();
@@ -190,4 +190,6 @@ export default function ContentUI({ children }) {
       )}
     </>
   );
-}
+};
+
+export default ContentUI;
