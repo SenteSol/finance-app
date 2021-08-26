@@ -11,6 +11,9 @@ export const columns = [
   { id: "name", label: "", minWidth: 100 }
 ];
 
+export const section = "Loan";
+export const pathname = "/loans/add-loan/";
+
 export const CLIENT_REQUIRED = "Client required";
 export const AMOUNT_REQUIRED = "Amount required";
 export const RATE_REQUIRED = "City required";

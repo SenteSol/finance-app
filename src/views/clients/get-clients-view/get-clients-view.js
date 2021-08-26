@@ -1,14 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Grid } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Grid } from "@material-ui/core";
+import CreateIcon from "@material-ui/icons/Create";
 import ContentUI from "../../../components/content-ui";
 import { getClients } from "../actions/client.actions";
-import GetClients from "./get-clients";
+// import GetClients from "./get-clients";
+import AddButton from "../../../components/addButton";
+import TableList from "../../../components/table";
+import { columns, section, pathname } from "../../../constants/views/clients";
+import SimpleModal from "../../../components/modal/modal";
 import { useStyles } from "./clientStyles";
 
 const ClientsView = props => {
+  const [allClients, setAllClients] = useState([]);
   const classes = useStyles();
   const dispatch = useDispatch();
   const clients = useSelector(state => state?.clients.clients);
@@ -19,6 +24,28 @@ const ClientsView = props => {
     }
     dispatch(getClients());
   }, [deleteClient]);
+
+  useEffect(() => {
+    setAllClients(cleanTableData(clients));
+  }, [clients]);
+
+  const cleanTableData = tableData =>
+    tableData.map(data => ({
+      id: data.clientId,
+      name: data.clientName,
+      email: data.clientContactEmail,
+      number: data.clientContactNumber,
+      address: `${data.address} ,${data.city}`,
+      country: data.country,
+      buttons: (
+        <>
+          <Link to={{ pathname: `/clients/edit-client/${data.clientId}/` }} className={classes.link}>
+            <CreateIcon className={classes.actionEditIcons} />
+          </Link>
+          <SimpleModal clientId={data.clientId} clientName={data.clientName} />
+        </>
+      )
+    }));
 
   return (
     <ContentUI props={props}>
@@ -31,15 +58,8 @@ const ClientsView = props => {
         spacing={3}
         className={classes.clientGrid}
       >
-        <span className={classes.addButtonComponent}>
-          <Link to={{ pathname: "/clients/add-client/" }} className={classes.link}>
-            <Button variant="contained" className={classes.addButton}>
-              <AddIcon className={classes.addIcon} />
-              <strong>Add Client</strong>
-            </Button>
-          </Link>
-        </span>
-        <GetClients clients={clients} />
+        <AddButton pathname={pathname} section={section} />
+        <TableList tableBodies={allClients} tableHeaders={columns} />
       </Grid>
     </ContentUI>
   );

@@ -9,10 +9,9 @@ import {
   TablePagination,
   TableRow
 } from "@material-ui/core";
-import { columns } from "../../../constants/views/payments";
-import { useStyles } from "../../loans/get-loans-view/loansStyles";
+import { useStyles } from "./tableStyles";
 
-const GetPayments = ({ payments }) => {
+const TableList = ({ tableBodies, tableHeaders }) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -27,11 +26,11 @@ const GetPayments = ({ payments }) => {
   };
   return (
     <Paper className={classes.root}>
-      <TableContainer className={classes.container} id="viewLoans">
+      <TableContainer className={classes.container} id="clientTable">
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow className={classes.tableHead}>
-              {columns.map(column => (
+              {tableHeaders.map(column => (
                 <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
                   {column.label}
                 </TableCell>
@@ -39,28 +38,22 @@ const GetPayments = ({ payments }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Array.isArray(payments)
-              ? payments.map(payment => {
-                  const { paymentId, amountPaid, comment, datePaid, previousPendingAmount, amountPending } = payment;
-
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1}>
-                      <TableCell key={paymentId}>{amountPending}</TableCell>
-                      <TableCell key={paymentId}>{previousPendingAmount}</TableCell>
-                      <TableCell key={paymentId}>{amountPaid}</TableCell>
-                      <TableCell key={paymentId}>{datePaid}</TableCell>
-                      <TableCell key={paymentId}>{comment}</TableCell>
-                    </TableRow>
-                  );
-                })
-              : null}
+            {tableBodies.map(body => (
+              <TableRow hover role="checkbox" tabIndex={-1}>
+                {Object.values(body)
+                  .slice(1)
+                  .map(tableData => (
+                    <TableCell key={body.id}>{tableData}</TableCell>
+                  ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={payments.length}
+        count={tableBodies.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -70,4 +63,4 @@ const GetPayments = ({ payments }) => {
   );
 };
 
-export default GetPayments;
+export default TableList;
