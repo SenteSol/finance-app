@@ -21,12 +21,12 @@ export const getMostValuedCustomers = (loans, euroRate, dollarRate) => {
 
 const convertCurrencyToInteger = interestAmount => {
   if (interestAmount.includes("UGX")) {
-    return parseInt(interestAmount.replaceAll(",", "").replace(".", "").split("").slice(4, -2).join(""), 10) / 3500;
+    return parseInt(interestAmount.replace(/,/g, "").replace(".", "").split("").slice(4, -2).join(""), 10) / 3500;
   }
   if (interestAmount.includes("$")) {
-    return parseInt(interestAmount.replaceAll(",", "").replace(".", "").split("").slice(1, -2).join(""), 10);
+    return parseInt(interestAmount.replace(/,/g, "").replace(".", "").split("").slice(1, -2).join(""), 10);
   }
-  return parseInt(interestAmount.replaceAll(",", "").replace(".", "").split("").slice(1, -2).join(""), 10) * 1.2;
+  return parseInt(interestAmount.replace(/,/g, "").replace(".", "").split("").slice(1, -2).join(""), 10) * 1.2;
 };
 
 export const calculatePopularCurrency = loans => {
@@ -38,17 +38,15 @@ export const calculatePopularCurrency = loans => {
     const { amount } = loan;
     if (amount.includes("UGX")) {
       shillingPayments.push(
-        parseInt(amount.replaceAll(",", "").replace(".", "").split("").slice(4, -2).join(""), 10) / 3500
+        parseInt(amount.replace(/,/g, "").replace(".", "").split("").slice(4, -2).join(""), 10) / 3500
       );
     }
     if (amount.includes("$")) {
-      dollarPayments.push(parseInt(amount.replaceAll(",", "").replace(".", "").split("").slice(1, -2).join(""), 10));
+      dollarPayments.push(parseInt(amount.replace(/,/g, "").replace(".", "").split("").slice(1, -2).join(""), 10));
     }
 
     if (amount.includes("€")) {
-      euroPayments.push(
-        parseInt(amount.replaceAll(",", "").replace(".", "").split("").slice(1, -2).join(""), 10) * 1.2
-      );
+      euroPayments.push(parseInt(amount.replace(/,/g, "").replace(".", "").split("").slice(1, -2).join(""), 10) * 1.2);
     }
   });
 
