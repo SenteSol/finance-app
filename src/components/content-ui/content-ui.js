@@ -111,15 +111,16 @@ const ContentUI = ({ children }) => {
           >
             <Toolbar className={classesBase.contentToolBar}>
               <IconButton
+                data-testid="drawer"
                 color="inherit"
-                aria-label="open drawer"
+                aria-label="open drawer first"
                 onClick={handleDrawerOpen}
                 edge="start"
                 className={clsx(classes.menuButton, {
                   [classes.hide]: open
                 })}
               >
-                <MenuIcon />
+                <MenuIcon data-testid="drawer" />
               </IconButton>
               <span className={classesBase.contentToolBarItems}>
                 <Logo />
