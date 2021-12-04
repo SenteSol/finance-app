@@ -24,7 +24,9 @@ const GetPaymentsView = props => {
   }, []);
 
   useEffect(() => {
-    setAllPayments(cleanTableData(payments));
+    if (payments.isArray && payments.length > 0) {
+      setAllPayments(cleanTableData(payments));
+    }
   }, [payments]);
 
   const cleanTableData = tableData =>

@@ -10,7 +10,7 @@ const options = (from = "EUR", to = "UGX") => ({
   }
 });
 
-export const getCurrencyRates = (from, to) =>
+export const getCurrencyRates = async (from, to) =>
   axios
     .request(options(from, to))
     .then(response => response.data.rates[to].rate)

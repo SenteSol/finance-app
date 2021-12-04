@@ -1,6 +1,6 @@
 import { clientActionTypes } from "./actions/client.types";
 
-const initialState = {
+export const initialState = {
   clients: [],
   client: {},
   error: "",
