@@ -22,7 +22,7 @@ const RegisterView = () => {
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
-    if (Object.keys(authState.error).length > 0) {
+    if (authState?.error && Object.keys(authState?.error).length > 0) {
       console.warn(Object.values(authState.error)[0]);
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");

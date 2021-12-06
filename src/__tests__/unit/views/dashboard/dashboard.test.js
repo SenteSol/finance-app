@@ -1,8 +1,8 @@
 import React from "react";
 import MatchMediaMock from "jest-matchmedia-mock";
 import { render, screen } from "@testing-library/react";
-import DashboardView from "../../../views/dashboard/dashboardView";
-import { RenderWithRouterMatch } from "../../../utils/test-utils";
+import DashboardView from "../../../../views/dashboard/dashboardView";
+import { RenderWithRouterMatch } from "../../../test-utils";
 
 let matchMedia;
 
