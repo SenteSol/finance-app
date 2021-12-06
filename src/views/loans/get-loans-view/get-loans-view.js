@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ContentUI from "../../../components/content-ui";
-import { getLoans } from "../actions/loan.actions";
+import { getLoans } from "../../../redux/actions/loans/actions/loan.actions";
 import { useStyles } from "./loansStyles";
 import TableList from "../../../components/table";
 import { columns, pathname, section } from "../../../constants/views/loans";

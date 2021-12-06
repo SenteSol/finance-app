@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Container, CssBaseline, Typography, Grid } from "@material-ui/core";
 import RegisterForm from "./register-form";
-import { registerUser } from "../actions/auth.actions";
+import { registerUser } from "../../../redux/actions/auth/actions/auth.actions";
 import { useStyles } from "../authStyles";
 import {
   CONFIRM_PASSWORD_REQUIRED,
@@ -22,7 +22,7 @@ const RegisterView = () => {
   const dispatch = useDispatch();
   const authState = useSelector(state => state?.authentication);
   useEffect(() => {
-    if (Object.keys(authState.error).length > 0) {
+    if (authState?.error && Object.keys(authState?.error).length > 0) {
       console.warn(Object.values(authState.error)[0]);
     } else if (authState?.isAuthenticated) {
       history.push("/dashboard");

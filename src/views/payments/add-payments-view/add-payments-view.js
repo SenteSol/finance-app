@@ -11,7 +11,7 @@ import ContentUI from "../../../components/content-ui";
 import { useStyles } from "./addPaymentsStyles";
 
 import { AMOUNT_REQUIRED, CURRENCY_REQUIRED, DATE_PAID_REQUIRED } from "../../../constants/views/payments";
-import { addPayment } from "../actions/payments.actions";
+import { addPayment } from "../../../redux/actions/payments/actions/payments.actions";
 
 const AddPaymentsView = props => {
   const {

@@ -34,7 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --testPathPattern src/__tests__ --env=jsdom --coverage jest --silent",
+    "test": "react-scripts test --testPathPattern src/__tests__/unit --env=jsdom --coverage jest --silent",
     "cypress": "cypress open",
     "eject": "react-scripts eject",
     "lint:js": "eslint src --fix",
@@ -86,5 +86,22 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-prettier": "^1.2.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 75
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/src/App.js",
+      "/src/index.js",
+      "/src/pages",
+      "/src/reportWebVitals.js",
+      "./src/__tests__/__fixtures__/*"
+    ]
   }
 }

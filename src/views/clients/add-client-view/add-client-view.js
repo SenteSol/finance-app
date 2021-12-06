@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import ContentUI from "../../../components/content-ui";
 import AddClient from "./add-client";
-import { addClient } from "../actions/client.actions";
+import { addClient } from "../../../redux/actions/clients/actions/client.actions";
 
 import {
   ADDRESS_REQUIRED,

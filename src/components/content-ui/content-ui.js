@@ -31,7 +31,7 @@ import Logo from "../logo/logo-view";
 import { username } from "./utils";
 import { useStyles, useStylesBase } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
-import { logoutUser } from "../../views/auth/actions/auth.actions";
+import { logoutUser } from "../../redux/actions/auth/actions/auth.actions";
 
 const ContentUI = ({ children }) => {
   const [user, setUser] = useState("");
@@ -111,15 +111,16 @@ const ContentUI = ({ children }) => {
           >
             <Toolbar className={classesBase.contentToolBar}>
               <IconButton
+                data-testid="drawer"
                 color="inherit"
-                aria-label="open drawer"
+                aria-label="open drawer first"
                 onClick={handleDrawerOpen}
                 edge="start"
                 className={clsx(classes.menuButton, {
                   [classes.hide]: open
                 })}
               >
-                <MenuIcon />
+                <MenuIcon data-testid="drawer" />
               </IconButton>
               <span className={classesBase.contentToolBarItems}>
                 <Logo />

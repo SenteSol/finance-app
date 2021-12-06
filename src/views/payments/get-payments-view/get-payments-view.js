@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 import ContentUI from "../../../components/content-ui";
-import { getPayments } from "../actions/payments.actions";
+import { getPayments } from "../../../redux/actions/payments/actions/payments.actions";
 import { useStyles } from "./paymentStyles";
 import TableList from "../../../components/table";
 import { columns, section } from "../../../constants/views/payments";
