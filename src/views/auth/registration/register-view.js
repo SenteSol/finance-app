@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Container, CssBaseline, Typography, Grid } from "@material-ui/core";
 import RegisterForm from "./register-form";
-import { registerUser } from "../actions/auth.actions";
+import { registerUser } from "../../../redux/actions/auth/actions/auth.actions";
 import { useStyles } from "../authStyles";
 import {
   CONFIRM_PASSWORD_REQUIRED,

@@ -1,5 +1,5 @@
-import clientReducer, { initialState } from "../../../../views/clients/clients.reducer";
-import { clientActionTypes } from "../../../../views/clients/actions/client.types";
+import clientReducer, { initialState } from "../../../../redux/reducers/clients.reducer";
+import { clientActionTypes } from "../../../../redux/actions/clients/actions/client.types";
 import { client } from "../../../__fixtures__/client";
 import {
   successfulClientEvent,

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import ContentUI from "../../../components/content-ui";
 import EditClient from "./edit-client";
-import { getClient, editClient } from "../actions/client.actions";
+import { getClient, editClient } from "../../../redux/actions/clients/actions/client.actions";
 
 const EditClientView = props => {
   const {

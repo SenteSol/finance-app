@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import ContentUI from "../../../components/content-ui";
-import { getClients } from "../actions/client.actions";
+import { getClients } from "../../../redux/actions/clients/actions/client.actions";
 import AddButton from "../../../components/addButton";
 import TableList from "../../../components/table";
 import { columns, section, pathname } from "../../../constants/views/clients";

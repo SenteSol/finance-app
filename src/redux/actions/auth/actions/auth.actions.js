@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 import { loginUserAction, registerUserAction, loginFailed, registerFailed, logoutUserAction } from "./auth.types";
-import { instance } from "../../../config/client";
+import { instance } from "../../../../config/client";
 
 export const loginUser = loginData => dispatch => {
   instance

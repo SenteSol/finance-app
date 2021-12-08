@@ -1,4 +1,4 @@
-import { instance } from "../../../config/client";
+import { instance } from "../../../../config/client";
 import {
   getClientsAction,
   clientActionFailed,

@@ -1,5 +1,5 @@
-import { loanActionTypes } from "./actions/loan.types";
-import { loadingActions } from "../../redux/loader/loading.actions";
+import { loanActionTypes } from "../actions/loans/actions/loan.types";
+import { loadingActions } from "../actions/loader/loading.actions";
 
 const initialState = {
   loans: [],

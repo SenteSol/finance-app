@@ -12,8 +12,8 @@ import {
   RATE_REQUIRED,
   DATE_DISBURSED_REQUIRED
 } from "../../../constants/views/loans";
-import { addLoan } from "../actions/loan.actions";
-import { getClients } from "../../clients/actions/client.actions";
+import { addLoan } from "../../../redux/actions/loans/actions/loan.actions";
+import { getClients } from "../../../redux/actions/clients/actions/client.actions";
 
 const AddLoanView = props => {
   const history = useHistory();

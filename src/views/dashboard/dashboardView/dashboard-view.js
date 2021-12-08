@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLoans } from "../../loans/actions/loan.actions";
+import { getLoans } from "../../../redux/actions/loans/actions/loan.actions";
 import ContentUI from "../../../components/content-ui";
 import { getMostValuedCustomers, calculatePopularCurrency, calculateRevenuePerMonth } from "../utils";
 import { getCurrencyRates } from "../../../api/currencyConverter";

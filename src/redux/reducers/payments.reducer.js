@@ -1,5 +1,5 @@
-import { paymentActionTypes } from "./actions/payments.types";
-import { loadingActions } from "../../redux/loader/loading.actions";
+import { paymentActionTypes } from "../actions/payments/actions/payments.types";
+import { loadingActions } from "../actions/loader/loading.actions";
 
 const initialState = {
   payments: [],

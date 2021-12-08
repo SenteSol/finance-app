@@ -1,4 +1,4 @@
-import { clientActionTypes } from "./actions/client.types";
+import { clientActionTypes } from "../actions/clients/actions/client.types";
 
 export const initialState = {
   clients: [],

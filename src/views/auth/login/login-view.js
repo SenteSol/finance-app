@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { CssBaseline, Typography, Container, Grid } from "@material-ui/core";
 import LoginForm from "./login-form";
 import Logo from "../../../components/logo";
-import { loginUser } from "../actions/auth.actions";
+import { loginUser } from "../../../redux/actions/auth/actions/auth.actions";
 import { useStyles } from "../authStyles";
 import { EMAIL_REQUIRED, INVALID_EMAIL_ADDRESS, PASSWORD_REQUIRED } from "../../../constants/views/auth";
 
