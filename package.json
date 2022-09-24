@@ -35,6 +35,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --testPathPattern src/__tests__/unit --env=jsdom --coverage jest --silent",
+    "one-test": "react-scripts test --testPathPattern src/__tests__/unit/views/dashboard/utils.test.js --env=jsdom --coverage jest --silent false",
     "cypress": "cypress open",
     "eject": "react-scripts eject",
     "lint:js": "eslint src --fix",
@@ -93,7 +94,7 @@
         "branches": 50,
         "functions": 50,
         "lines": 50,
-        "statements": 75
+        "statements": 70
       }
     },
     "coveragePathIgnorePatterns": [
