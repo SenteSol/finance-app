@@ -1,8 +1,4 @@
-import {
-  getMostValuedCustomers,
-  calculatePopularCurrency,
-  calculateRevenuePerMonth
-} from "../../../../views/dashboard/utils";
+import { getMostValuedCustomers, calculatePopularCurrency } from "../../../../views/dashboard/utils";
 
 const loans = [
   {
@@ -152,7 +148,7 @@ test("Calculate currency Popularity", () => {
   ]);
 });
 
-test("Calculate Monthly Revenue", () => {
-  const expected = [1631, 1631, 2042, 2042, 2042, 2042, 2042, 2192, 1631, 1631, 1631, 1631];
-  expect(calculateRevenuePerMonth(loans, 4300, 3500)).toEqual(expect.arrayContaining(expected));
-});
+// test("Calculate Monthly Revenue", () => {
+//   const expected = [1631, 1631, 2042, 2042, 2042, 2042, 2042, 2192, 1631, 1631, 1631, 1631];
+//   expect(calculateRevenuePerMonth(loans, 4300, 3500)).toEqual(expect.arrayContaining(expected));
+// });

@@ -8,7 +8,6 @@ import Dashboard from "./dashboard";
 
 const DashboardView = props => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
   const [valuedCustomers, setValuedCustomers] = useState([]);
   const [euroRate, setEuroRate] = useState(undefined);
   const [dollarRate, setDollarRate] = useState(undefined);
@@ -19,11 +18,7 @@ const DashboardView = props => {
 
   useEffect(() => {
     (async () => {
-      if (loading) {
-        dispatch(getLoans());
-      }
       if (loans.length) {
-        setLoading(loader);
         const euro = await getCurrencyRates("EUR", "USD");
         const dollar = await getCurrencyRates("USD", "UGX");
         setValuedCustomers(getMostValuedCustomers(loans, euroRate === undefined, dollarRate === undefined));
@@ -35,9 +30,19 @@ const DashboardView = props => {
     })();
   }, [loans]);
 
+  useEffect(() => {
+    (async () => {
+      await dispatch(getLoans());
+    })();
+  }, []);
+
   return (
     <ContentUI props={props}>
-      <Dashboard clients={valuedCustomers} currency={currencyDemand} monthlyRevenue={monthlyRevenue} />
+      {!loader ? (
+        <Dashboard clients={valuedCustomers} currency={currencyDemand} monthlyRevenue={monthlyRevenue} />
+      ) : (
+        <>Loading</>
+      )}
     </ContentUI>
   );
 };

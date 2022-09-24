@@ -24,6 +24,7 @@ const TableList = ({ tableBodies, tableHeaders }) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container} id="clientTable">
