@@ -24,20 +24,21 @@ const GetPaymentsView = props => {
   }, []);
 
   useEffect(() => {
-    if (payments.isArray && payments.length > 0) {
+    if (payments && payments.length > 0) {
       setAllPayments(cleanTableData(payments));
     }
   }, [payments]);
 
   const cleanTableData = tableData =>
-    tableData.map(data => ({
-      id: data.paymentId,
-      amountPending: data.amountPending,
-      previousPendingAmount: data.previousPendingAmount,
-      amountPaid: data.amountPaid,
-      datePaid: data.datePaid,
-      comment: data.comment
+    tableData.map(({ paymentId, amountPending, previousPendingAmount, amountPaid, datePaid, comment }) => ({
+      id: paymentId,
+      amountPending,
+      previousPendingAmount,
+      amountPaid,
+      datePaid,
+      comment
     }));
+
   return (
     <ContentUI props={props}>
       <Grid
