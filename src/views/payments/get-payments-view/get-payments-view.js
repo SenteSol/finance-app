@@ -24,7 +24,7 @@ const GetPaymentsView = props => {
   }, []);
 
   useEffect(() => {
-    if (payments.isArray && payments.length > 0) {
+    if (payments && payments.length > 0) {
       setAllPayments(cleanTableData(payments));
     }
   }, [payments]);
@@ -38,6 +38,7 @@ const GetPaymentsView = props => {
       datePaid: data.datePaid,
       comment: data.comment
     }));
+
   return (
     <ContentUI props={props}>
       <Grid

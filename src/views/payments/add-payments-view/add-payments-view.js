@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Button, Grid } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import dayjs from "dayjs";
 import AddPayments from "./add-payments";
 import ContentUI from "../../../components/content-ui";
 import { useStyles } from "./addPaymentsStyles";
@@ -62,8 +63,9 @@ const AddPaymentsView = props => {
 
   const handleSubmit = async (values, onSubmitProps) => {
     const { amount, comment, datePaid, currency } = values;
+    const currentDate = dayjs(datePaid).format("YYYY-MM-DD");
 
-    const jsonData = { amount, comment, datePaid, currency };
+    const jsonData = { amount, comment, datePaid: currentDate, currency };
     await dispatch(addPayment(jsonData, id));
     onSubmitProps.resetForm();
   };
