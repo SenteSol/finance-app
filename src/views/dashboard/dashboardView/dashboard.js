@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box } from "@mui/material";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { useStyles } from "./dashboardStyles";
