@@ -1,54 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { Paper, TableContainer } from "@mui/material";
+import { styled } from "@mui/system";
 
 export const useStyles = makeStyles(() => ({
-  root: {
-    width: "100%"
-  },
-  container: {
-    maxHeight: 440,
-    borderRadius: "4px"
-  },
-  addButton: {
-    background: "#fff",
-    color: "#97a2a2",
-    paddingLeft: "40px",
-    "&:hover": {
-      backgroundColor: "#ffffff",
-      color: "black"
-    }
-  },
-  tableHead: {
-    background: "blue"
-  },
-  addIcon: {
-    color: "#fff",
-    background: "#97a2a2",
-    position: "absolute",
-    left: "0",
-    height: "100%",
-    width: "30px",
-    borderRadius: "4px 0 0 4px"
-  },
-  addButtonComponent: {
-    display: "inline-block",
-    margin: "30px 0px"
-  },
-  clientGrid: {
-    marginLeft: "10px"
-  },
-  actionEditIcons: {
-    color: "#54BCCF",
-    marginRight: "20px",
-    transition: "color 1000ms",
-    "&:hover": {
-      cursor: "pointer",
-      color: "black"
-    }
-  },
-  link: {
-    textDecoration: "none"
-  },
   body: {
     textOverflow: "ellipsis"
   }
 }));
+
+export const StyledPaper = styled(Paper)`
+  width: 100%;
+`;
+
+export const StyledTableContainer = styled(TableContainer)`
+  max-height: 500px;
+  border-radius: 4px;
+`;

@@ -1,18 +1,9 @@
 import React from "react";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow
-} from "@material-ui/core";
-import { useStyles } from "./tableStyles";
+import { Table, TableBody, TableCell, TableHead, TablePagination, TableRow } from "@mui/material";
+
+import { StyledPaper, StyledTableContainer } from "./tableStyles";
 
 const TableList = ({ tableBodies, tableHeaders }) => {
-  const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -26,13 +17,13 @@ const TableList = ({ tableBodies, tableHeaders }) => {
   };
 
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container} id="clientTable">
+    <StyledPaper>
+      <StyledTableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
-            <TableRow className={classes.tableHead}>
-              {tableHeaders.map(column => (
-                <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
+            <TableRow>
+              {tableHeaders.map((column, i) => (
+                <TableCell key={i} align={column.align} style={{ minWidth: column.minWidth }}>
                   {column.label}
                 </TableCell>
               ))}
@@ -40,17 +31,17 @@ const TableList = ({ tableBodies, tableHeaders }) => {
           </TableHead>
           <TableBody>
             {tableBodies.map(body => (
-              <TableRow hover role="checkbox" tabIndex={-1}>
+              <TableRow hover role="checkbox" tabIndex={-1} key={body.id}>
                 {Object.values(body)
                   .slice(1)
                   .map(tableData => (
-                    <TableCell key={body.id}>{tableData}</TableCell>
+                    <TableCell>{tableData}</TableCell>
                   ))}
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </StyledTableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
@@ -60,7 +51,7 @@ const TableList = ({ tableBodies, tableHeaders }) => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </Paper>
+    </StyledPaper>
   );
 };
 

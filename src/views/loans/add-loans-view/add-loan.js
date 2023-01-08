@@ -31,8 +31,10 @@ const AddLoan = ({ formik, handleDateChange, onClick, handleSelectChange, client
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {clients.map(client => (
-                <MenuItem value={client.clientName}>{client.clientName}</MenuItem>
+              {clients.map((client, i) => (
+                <MenuItem key={i} value={client.clientName}>
+                  {client.clientName}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -72,8 +74,10 @@ const AddLoan = ({ formik, handleDateChange, onClick, handleSelectChange, client
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {CURRENCIES.map(currency => (
-                <MenuItem value={currency}>{currency}</MenuItem>
+              {CURRENCIES.map((currency, i) => (
+                <MenuItem key={i} value={currency}>
+                  {currency}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>

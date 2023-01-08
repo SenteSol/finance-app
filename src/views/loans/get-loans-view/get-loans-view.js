@@ -21,7 +21,9 @@ const GetLoansView = props => {
   }, []);
 
   useEffect(() => {
-    setAllLoans(cleanTableData(loans));
+    if (loans.length) {
+      setAllLoans(cleanTableData(loans));
+    }
   }, [loans]);
 
   const cleanTableData = tableData =>
