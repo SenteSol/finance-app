@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 import { loginUserAction, registerUserAction, loginFailed, registerFailed, logoutUserAction } from "./auth.types";
-import { setTokenAction, clearTokenAction } from "../../../redux/token/token.types";
+import { setTokenAction, clearTokenAction } from "../../../token/token.types";
 import { instance } from "../../../../config/client";
 
 export const loginUser = loginData => dispatch => {

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import authReducer from "../views/auth/auth.reducer";
-import clientReducer from "../views/clients/clients.reducer";
-import loansReducer from "../views/loans/loans.reducer";
-import paymentsReducer from "../views/payments/payments.reducer";
+import authReducer from "./reducers/auth.reducer";
+import clientReducer from "./reducers/clients.reducer";
+import loansReducer from "./reducers/loans.reducer";
+import paymentsReducer from "./reducers/payments.reducer";
 import tokenReducer from "./token/token.reducer";
 
 const mainReducer = combineReducers({
