@@ -7,7 +7,7 @@ import ContentUI from "../../../components/content-ui";
 import { getClients } from "../../../redux/actions/clients/actions/client.actions";
 import AddButton from "../../../components/addButton";
 import TableList from "../../../components/table";
-import { columns, pathname } from "../../../constants/views/clients";
+import { columns, section, pathname } from "../../../constants/views/clients";
 import SimpleModal from "../../../components/modal/modal";
 import { useStyles } from "./clientStyles";
 
@@ -57,9 +57,7 @@ const ClientsView = props => {
         spacing={3}
         className={classes.clientGrid}
       >
-        <AddButton pathname={pathname} background="#fff" color="#97a2a2" hoverBackground="#ffffff">
-          Add Client
-        </AddButton>
+        <AddButton pathname={pathname} section={section} />
         <TableList tableBodies={allClients} tableHeaders={columns} />
       </Grid>
     </ContentUI>
