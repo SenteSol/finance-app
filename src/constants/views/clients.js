@@ -1,9 +1,9 @@
 export const columns = [
-  { id: "name", label: "Client", minWidth: 170 },
-  { id: "name", label: "Email", minWidth: 170 },
-  { id: "name", label: "Contact", minWidth: 170 },
-  { id: "code", label: "Address", minWidth: 100 },
-  { id: "name", label: "Country", minWidth: 170 },
+  { id: "name", label: "Client", maxWidth: 170 },
+  { id: "name", label: "Email", maxWidth: 100 },
+  { id: "name", label: "Contact", maxWidth: 170 },
+  { id: "code", label: "Address", maxWidth: 100 },
+  { id: "name", label: "Country", maxWidth: 170 },
   { id: "name", label: "", minWidth: 170 }
 ];
 
