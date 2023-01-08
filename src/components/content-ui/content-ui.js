@@ -19,7 +19,8 @@ import {
   Grid,
   Button
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PeopleIcon from "@material-ui/icons/People";
