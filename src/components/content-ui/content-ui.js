@@ -15,24 +15,26 @@ import {
   IconButton,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Grid,
-  Button
+  ListItemText
 } from "@material-ui/core";
-import MenuIcon from "@mui/icons-material/Menu";
-// import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import PeopleIcon from "@material-ui/icons/People";
-import AvTimerIcon from "@material-ui/icons/AvTimer";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import AppsIcon from "@material-ui/icons/Apps";
+import { Grid, Stack } from "@mui/material";
+import {
+  Menu as MenuIcon,
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  People as PeopleIcon,
+  AvTimer as AvTimerIcon,
+  AccountCircle as AccountCircleIcon,
+  ExitToApp as ExitToAppIcon,
+  Apps as AppsIcon
+} from "@mui/icons-material";
 import Logo from "../logo/logo-view";
+import CustomButton from "../customButton";
 import { username } from "./utils";
-import { useStyles, useStylesBase } from "./contentStyles";
+import { useStyles, useStylesBase, StyledSmallScreen, SmallScreenMessage, SmallScreenTitle } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
 import { logoutUser } from "../../redux/actions/auth/actions/auth.actions";
+import { COLORS } from "../../styles/theme";
 
 const ContentUI = ({ children }) => {
   const [user, setUser] = useState("");
@@ -81,20 +83,22 @@ const ContentUI = ({ children }) => {
   };
 
   const SmallScreen = (
-    <div className={classesBase.smallScreen}>
-      <Typography className={classesBase.smallScreenTitle}>Sorry your screen is too small.</Typography>
-      <Typography className={classesBase.smallScreenMessage}>{SMALL_SCREEN_MESSAGE}</Typography>
-      <Grid container justify="center">
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classesBase.smallScreenButton}
-          onClick={handleMiniScreen}
-        >
-          I understand but let me give it a try anyway!
-        </Button>
-      </Grid>
-    </div>
+    <StyledSmallScreen>
+      <Stack justifyContent="center">
+        <SmallScreenTitle>Sorry your screen is too small.</SmallScreenTitle>
+        <SmallScreenMessage>{SMALL_SCREEN_MESSAGE}</SmallScreenMessage>
+        <Grid container>
+          <CustomButton
+            background={COLORS.LIGHT_BLUE}
+            fontcolor={COLORS.WHITE}
+            hoverbackground={COLORS.LIGHT_BLUE}
+            onClick={handleMiniScreen}
+          >
+            <Typography variant="w1">I understand but let me give it a try anyway!</Typography>
+          </CustomButton>
+        </Grid>
+      </Stack>
+    </StyledSmallScreen>
   );
 
   return (

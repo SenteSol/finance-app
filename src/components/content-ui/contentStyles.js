@@ -1,4 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { Box, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { COLORS } from "../../styles/theme";
 
 const drawerWidth = 240;
 
@@ -157,3 +160,21 @@ export const useStyles = makeStyles(theme => ({
     color: "#00aba6"
   }
 }));
+
+export const StyledSmallScreen = styled(Box)`
+  padding: 80px 60px;
+  background-color: ${COLORS.LIGHT_GREY};
+  height: 100vh;
+`;
+
+export const SmallScreenTitle = styled(Typography)`
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-weight: lighter;
+`;
+
+export const SmallScreenMessage = styled(Typography)`
+  color: ${COLORS.DARK_GREY};
+  font-size: 14px;
+  margin-bottom: 20px;
+`;
