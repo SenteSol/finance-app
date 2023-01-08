@@ -1,19 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./styles/theme";
 import store from "./redux/combineStore";
 import Authentication from "./views/auth";
 import Dashboard from "./pages/dashboard";
 import Loans from "./pages/loans";
 import Payments from "./pages/payments";
 import Clients from "./pages/clients";
-
-export const theme = createTheme({
-  typography: {
-    fontFamily: ["Poppins", "Roboto"].join(",")
-  }
-});
 
 function App() {
   return (
