@@ -17,7 +17,7 @@ import {
   ListItemIcon,
   ListItemText
 } from "@material-ui/core";
-import { Grid, Stack } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import {
   Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
@@ -31,7 +31,7 @@ import {
 import Logo from "../logo/logo-view";
 import CustomButton from "../customButton";
 import { username } from "./utils";
-import { useStyles, useStylesBase, StyledSmallScreen, SmallScreenMessage, SmallScreenTitle } from "./contentStyles";
+import { useStyles, useStylesBase, SmallScreenMessage, SmallScreenTitle } from "./contentStyles";
 import { SMALL_SCREEN_MESSAGE } from "../../constants/components/contentUI/content-ui";
 import { logoutUser } from "../../redux/actions/auth/actions/auth.actions";
 import { COLORS } from "../../styles/theme";
@@ -83,7 +83,13 @@ const ContentUI = ({ children }) => {
   };
 
   const SmallScreen = (
-    <StyledSmallScreen>
+    <Box
+      sx={{
+        padding: "80px 60px",
+        backgroundColor: `${COLORS.LIGHT_GREY}`,
+        height: "100vh"
+      }}
+    >
       <Stack justifyContent="center">
         <SmallScreenTitle>Sorry your screen is too small.</SmallScreenTitle>
         <SmallScreenMessage>{SMALL_SCREEN_MESSAGE}</SmallScreenMessage>
@@ -98,7 +104,7 @@ const ContentUI = ({ children }) => {
           </CustomButton>
         </Grid>
       </Stack>
-    </StyledSmallScreen>
+    </Box>
   );
 
   return (
@@ -190,7 +196,7 @@ const ContentUI = ({ children }) => {
           </Drawer>
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Typography paragraph>{children}</Typography>
+            <Box>{children}</Box>
           </main>
         </div>
       )}

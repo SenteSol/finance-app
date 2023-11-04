@@ -21,7 +21,7 @@ const LoginForm = ({ formik }) => {
         <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
           LogIn
         </Button>
-        <Grid container justify="flex-start">
+        <Grid container justifyContent="flex-start">
           <Grid item>
             <Link to="/register" variant="body2" className={classes.authLink}>
               Do not have an account? Sign Up

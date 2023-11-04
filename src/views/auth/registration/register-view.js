@@ -57,18 +57,18 @@ const RegisterView = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Grid container justify="flex-start">
+        <Grid container justifyContent="flex-start">
           <Typography component="h1" variant="h3">
             <Logo size="big" />
           </Typography>
         </Grid>
-        <Grid container justify="flex-start">
+        <Grid container justifyContent="flex-start">
           <Typography component="h1" variant="h5" className={classes.authTitle}>
             Sign Up
           </Typography>
         </Grid>
-        <Grid container justify="flex-start">
-          <Typography component="h3" variant="h7" className={classes.authMessage}>
+        <Grid container justifyContent="flex-start">
+          <Typography component="h3" variant="h6" className={classes.authMessage}>
             Register a new account.
           </Typography>
         </Grid>
