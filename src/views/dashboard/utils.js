@@ -82,8 +82,6 @@ export const calculateRevenuePerMonth = (loans, euroRate, dollarRate) => {
       monthsAgo: dateDiff
     });
   });
-  console.log(interestData, "the data ========>");
-  console.log(typeof interestData, "the data ========>");
   const monthlyInterest = getMonthlyInterest(interestData);
   return sumMonthlyInterest(monthlyInterest);
 };
