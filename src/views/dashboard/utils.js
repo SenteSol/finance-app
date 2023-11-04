@@ -88,12 +88,12 @@ export const calculateRevenuePerMonth = (loans, euroRate, dollarRate) => {
 
 const getMonthlyInterest = interestData => {
   const interestArray = [];
-
   interestData.forEach(interest => {
     const max = 12;
-    if (interest.months < max) {
+    if (interest && interest?.months < max) {
       const maxDiff = max - interest.monthsAgo;
-      const isBefore = Array(maxDiff).fill(0);
+      // TODO this needs to be cleaned up it is preventing revenue chart from loading
+      const isBefore = Array(maxDiff < 0 ? 0 : maxDiff).fill(0);
       const isCurrent = Array(Number(interest.months)).fill(interest.amount);
 
       interestArray.push([...isBefore, ...isCurrent]);
